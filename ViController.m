@@ -104,6 +104,13 @@
     //[[dataStack lastObject] release];
 }
 
+- (void)theGee:(id)theEvent
+{
+    ViLog( @"trying to enter theGee mode" );
+    [self pushMethod:@"theGee:" withData:@"g"];
+    [execution executeStack: methodStack withData: dataStack];
+}
+
 - (void)resetStack:(id)theEvent
 {
     ViLog( @"trying to resetStack" );
@@ -550,6 +557,13 @@
 {
     ViLog( @"trying to moveToEndOfWordAndModifySelection" );
     [self pushMethod:@"moveToEndOfWordAndModifySelection:" withData:@"e"];
+    [execution executeStack: methodStack withData: dataStack];
+}
+
+- (void)selectCurrentLine:(id)theEvent
+{
+    ViLog( @"trying to selectCurrentLine" );
+    [self pushMethod:@"selectCurrentLine:" withData:@"V"];
     [execution executeStack: methodStack withData: dataStack];
 }
 

@@ -27,6 +27,7 @@
  */
 - (void)visual:(id)theEvent;
 - (void)repeat:(id)theEvent;
+- (void)theGee:(id)theEvent;
 - (void)resetStack:(id)theEvent;
 
 - (void)testCommand:(id)theEvent;
@@ -108,6 +109,7 @@
 - (void)moveToEndOfLine:(id)theEvent;
 - (void)moveToBeginningOfDocument:(id)theEvent;
 - (void)moveToEndOfDocument:(id)theEvent;
+- (void)selectCurrentLine:(id)theEvent;
 
 /**
  * Visual Movement Methods

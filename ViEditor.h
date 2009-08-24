@@ -40,6 +40,7 @@
  */
 - (void)visual:(NSNumber *)theIndex;
 - (void)repeat:(NSNumber *)theIndex;
+- (void)theGee:(NSNumber *)theIndex;
 - (void)resetStack:(NSNumber *)theIndex;
 - (void)insertBackward:(NSNumber *)theIndex;
 - (void)insertForward:(NSNumber *)theIndex;
@@ -119,6 +120,7 @@
 - (void)moveWordBackwardAndModifySelection:(NSNumber *)theIndex;
 - (void)moveWordForwardAndModifySelection:(NSNumber *)theIndex;
 - (void)moveToEndOfWordAndModifySelection:(NSNumber *)theIndex;
+- (void)selectCurrentLine:(NSNumber *)theIndex;
 
 /**
  * Scroll Methods

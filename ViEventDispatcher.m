@@ -11,8 +11,8 @@
 #import "ViWindow.h"
 
 static ViEventDispatcher *sharedViEventDispatcher = nil;
-bool debugOn = false;
-//bool debugOn = true;
+// bool debugOn = false;
+bool debugOn = true;
 
 /**
  * singleton instance of the event router.
@@ -93,8 +93,8 @@ bool debugOn = false;
 		             @"moveToEndOfDocument:", @"G",
 		                  @"insertBackward:", @"i",
 		                   @"insertForward:", @"a",
-							 @"insertAbove:", @"O",
-							 @"insertBelow:", @"o",
+          							 @"insertAbove:", @"O",
+          							 @"insertBelow:", @"o",
 		         @"insertAtBeginningOfLine:", @"I",
 		               @"insertAtEndOfLine:", @"A",
 		                        @"cutState:", @"d", 
@@ -104,10 +104,12 @@ bool debugOn = false;
 		                       @"copyState:", @"y", 
 		               @"changeToEndOfLine:", @"C", 
 		                     @"changeState:", @"c", 
-                           @"changeForward:", @"s", 
+                       @"changeForward:", @"s", 
 		                     @"pasteBefore:", @"P", 
 		                      @"pasteAfter:", @"p", 
 		                          @"visual:", @"v",
+		                          @"theGee:", @"g",
+                   @"selectCurrentLine:", @"V",
                       NULL] forKey: @"commandDefault"];
         /**
          * This keymap restricts commands to those only those that work with a repeat 
@@ -203,9 +205,9 @@ bool debugOn = false;
 		      @"moveDownAndModifySelection:", @"j",
 		        @"moveUpAndModifySelection:", @"k",
 		   @"moveForwardAndModifySelection:", @"l",
-       @"moveWordForwardAndModifySelection:", @"w",
-      @"moveWordBackwardAndModifySelection:", @"b",
-       @"moveToEndOfWordAndModifySelection:", @"e",
+   @"moveWordForwardAndModifySelection:", @"w",
+  @"moveWordBackwardAndModifySelection:", @"b",
+   @"moveToEndOfWordAndModifySelection:", @"e",
 		                  @"insertBackward:", @"i",
 		         @"insertAtBeginningOfLine:", @"I",
 		                   @"insertForward:", @"A",
@@ -400,6 +402,12 @@ bool debugOn = false;
 		                    @"scrollLineUp:", @"y",
 		                  @"scrollLineDown:", @"e",
                       NULL] forKey: @"controlDefault"];
+        /**
+         * This keymap handles the commands that are prefixed with "g"
+         */
+        [keyMaps setObject: [NSDictionary dictionaryWithObjectsAndKeys:
+            @"moveToBeginningOfDocument:", @"g",
+                      NULL] forKey: @"theGeeDefault"];
 
         activeKeyMap = [keyMaps objectForKey:@"commandDefault"];
     }

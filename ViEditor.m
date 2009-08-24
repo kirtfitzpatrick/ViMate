@@ -163,6 +163,14 @@
     }
 }
 
+- (void)theGee:(NSNumber *)theIndex
+{
+  ViLog( @"Setting theGee mode" );
+  [router setState:ViTheGeeState];
+  [router setActiveKeyMap:@"theGeeDefault"];
+}
+
+
 - (void)resetStack:(NSNumber *)theIndex
 {
     if ( [responder hasSelection] ) {
@@ -819,6 +827,11 @@
     [responder performSelector: @selector(moveWordForwardAndModifySelection:) withObject: window];
 }
 
+- (void)selectCurrentLine:(NSNumber *)theIndex
+{
+    [responder performSelector: @selector(moveToBeginningOfLine:) withObject: window];
+    [responder performSelector: @selector(moveDownAndModifySelection:) withObject: window];
+}
 
 
 
