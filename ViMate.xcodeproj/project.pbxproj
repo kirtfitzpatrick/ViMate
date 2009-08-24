@@ -10,10 +10,10 @@
 		8D5B49B0048680CD000E48DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C167DFE841241C02AAC07 /* InfoPlist.strings */; };
 		8D5B49B4048680CD000E48DA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
 		C6103FBF0BF7B45500E0E228 /* ViHelper.c in Sources */ = {isa = PBXBuildFile; fileRef = C6103FBE0BF7B45500E0E228 /* ViHelper.c */; };
-		C65111CF0BBF183600F3C94C /* ViSelectorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C65111CE0BBF183600F3C94C /* ViSelectorTest.m */; };
 		C65112380BBF2D9B00F3C94C /* ViController.m in Sources */ = {isa = PBXBuildFile; fileRef = C65112370BBF2D9B00F3C94C /* ViController.m */; };
 		C65112410BBF367700F3C94C /* ViEventDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = C65112400BBF367700F3C94C /* ViEventDispatcher.m */; };
 		C6D7B35C0BC5E35600A491A5 /* ViEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = C6D7B35B0BC5E35600A491A5 /* ViEditor.m */; };
+		C6D8076C0C8C552F00E5F516 /* ViDotEventStack.m in Sources */ = {isa = PBXBuildFile; fileRef = C6D8076B0C8C552F00E5F516 /* ViDotEventStack.m */; };
 		C6FA9FA20BBEF4CA00E54E59 /* ViPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C6FA9FA10BBEF4CA00E54E59 /* ViPlugin.m */; };
 		C6FA9FC90BBEFAED00E54E59 /* ViWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = C6FA9FC80BBEFAED00E54E59 /* ViWindow.m */; };
 		DC2094210C332986003D9E8C /* NSColor_categories.m in Sources */ = {isa = PBXBuildFile; fileRef = DC20941D0C332986003D9E8C /* NSColor_categories.m */; };
@@ -30,14 +30,14 @@
 		8D5B49B7048680CD000E48DA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6103FBD0BF7B45500E0E228 /* ViHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViHelper.h; sourceTree = "<group>"; };
 		C6103FBE0BF7B45500E0E228 /* ViHelper.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ViHelper.c; sourceTree = "<group>"; };
-		C65111CD0BBF183600F3C94C /* ViSelectorTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViSelectorTest.h; sourceTree = "<group>"; };
-		C65111CE0BBF183600F3C94C /* ViSelectorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViSelectorTest.m; sourceTree = "<group>"; };
 		C65112360BBF2D9B00F3C94C /* ViController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViController.h; sourceTree = "<group>"; };
 		C65112370BBF2D9B00F3C94C /* ViController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViController.m; sourceTree = "<group>"; };
 		C651123F0BBF367700F3C94C /* ViEventDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViEventDispatcher.h; sourceTree = "<group>"; };
 		C65112400BBF367700F3C94C /* ViEventDispatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViEventDispatcher.m; sourceTree = "<group>"; };
 		C6D7B35A0BC5E35600A491A5 /* ViEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViEditor.h; sourceTree = "<group>"; };
 		C6D7B35B0BC5E35600A491A5 /* ViEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViEditor.m; sourceTree = "<group>"; };
+		C6D8076A0C8C552F00E5F516 /* ViDotEventStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViDotEventStack.h; sourceTree = "<group>"; };
+		C6D8076B0C8C552F00E5F516 /* ViDotEventStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViDotEventStack.m; sourceTree = "<group>"; };
 		C6FA9FA00BBEF4CA00E54E59 /* ViPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViPlugin.h; sourceTree = "<group>"; };
 		C6FA9FA10BBEF4CA00E54E59 /* ViPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViPlugin.m; sourceTree = "<group>"; };
 		C6FA9FC70BBEFAED00E54E59 /* ViWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViWindow.h; sourceTree = "<group>"; };
@@ -110,10 +110,10 @@
 				C65112400BBF367700F3C94C /* ViEventDispatcher.m */,
 				C6FA9FA00BBEF4CA00E54E59 /* ViPlugin.h */,
 				C6FA9FA10BBEF4CA00E54E59 /* ViPlugin.m */,
-				C65111CD0BBF183600F3C94C /* ViSelectorTest.h */,
-				C65111CE0BBF183600F3C94C /* ViSelectorTest.m */,
 				C6FA9FC70BBEFAED00E54E59 /* ViWindow.h */,
 				C6FA9FC80BBEFAED00E54E59 /* ViWindow.m */,
+				C6D8076A0C8C552F00E5F516 /* ViDotEventStack.h */,
+				C6D8076B0C8C552F00E5F516 /* ViDotEventStack.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -206,13 +206,13 @@
 			files = (
 				C6FA9FA20BBEF4CA00E54E59 /* ViPlugin.m in Sources */,
 				C6FA9FC90BBEFAED00E54E59 /* ViWindow.m in Sources */,
-				C65111CF0BBF183600F3C94C /* ViSelectorTest.m in Sources */,
 				C65112380BBF2D9B00F3C94C /* ViController.m in Sources */,
 				C65112410BBF367700F3C94C /* ViEventDispatcher.m in Sources */,
 				C6D7B35C0BC5E35600A491A5 /* ViEditor.m in Sources */,
 				C6103FBF0BF7B45500E0E228 /* ViHelper.c in Sources */,
 				DC2094210C332986003D9E8C /* NSColor_categories.m in Sources */,
 				DC2094220C332986003D9E8C /* ViView.m in Sources */,
+				C6D8076C0C8C552F00E5F516 /* ViDotEventStack.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

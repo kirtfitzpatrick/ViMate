@@ -11,10 +11,10 @@
 
 
 @interface ViController : NSObject {
-    NSMutableArray *dataStack;
-    NSMutableArray *methodStack;
+    NSMutableArray * dataStack;
+    NSMutableArray * methodStack;
     id router;
-    ViEditor *execution;
+    ViEditor * execution;
 }
 
 - (void)setWindow:(NSWindow *)theWindow;

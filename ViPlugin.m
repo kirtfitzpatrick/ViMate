@@ -11,6 +11,7 @@
 
 
 @implementation ViPlugin
+
 - (id)initWithPlugInController:(id <TMPlugInController>)aController
 {
     NSLog( @"we have lift off!" );
@@ -18,4 +19,5 @@
     
     return [super init];
 }
+
 @end

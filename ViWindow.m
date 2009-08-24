@@ -13,7 +13,6 @@
 
 @implementation ViWindow
 
-
 + (BOOL)isValidWindowType:(NSWindow *)theWindow
 {
 	return [[theWindow firstResponder] isKindOfClass:NSClassFromString(@"OakTextView")];
@@ -24,9 +23,9 @@
 	ViLog( @"[ViWindow %s]", _cmd );
 	
 	if( [ViWindow isValidWindowType:self] ){
-		ViEventDispatcher *router = [ViEventDispatcher sharedViEventDispatcher];
-		[router releaseWindow:self];
+		[[ViEventDispatcher sharedViEventDispatcher] releaseWindow:self];
 	}
+
 	[super dealloc];
 }
 
@@ -35,9 +34,8 @@
     id event;
 	
 	if( [ViWindow isValidWindowType:self] && [theEvent type] == NSKeyDown ) {
-		ViEventDispatcher *router = [ViEventDispatcher sharedViEventDispatcher];
-        [router setWindow:self];
-        event = [router routeEvent:theEvent];
+        [[ViEventDispatcher sharedViEventDispatcher] setWindow:self];
+        event = [[ViEventDispatcher sharedViEventDispatcher] routeEvent:theEvent];
             
         if ( event != nil ) {
             [super sendEvent:theEvent];
@@ -46,8 +44,5 @@
         [super sendEvent:theEvent];
     }
 }
-
-
-
 
 @end

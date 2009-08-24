@@ -8,12 +8,12 @@
 
 #import <Cocoa/Cocoa.h>
 #import "ViController.h"
+#import "ViDotEventStack.h"
 #import "ViView.h"
 #import "ViMode.h"
 
 // set in ViEventDispatcher.m
 extern bool debugOn;
-
 
 
 typedef enum _ViState {
@@ -25,16 +25,18 @@ typedef enum _ViState {
 } ViState;
 
 
-@interface ViEventDispatcher : NSObject
-{
-    NSString *keyMapLabel;
+@interface ViEventDispatcher : NSObject {
+
+    NSString * commandModeKey;
+    NSString * keyMapLabel;
     ViMode mode;
     ViState state;
+    ViDotEventStack * dotEventStack;
     NSWindow * lastWindow;
     id responder;
     // holds onto the methods that should be executed once we reach a final method.
-    ViController *command;
-    NSMutableDictionary *keyMaps;
+    ViController * command;
+    NSMutableDictionary * keyMaps;
     id activeKeyMap;
 	
 	ViView * currentCursorView;

@@ -9,7 +9,6 @@
 #import <Cocoa/Cocoa.h>
 
 @interface ViEditor : NSObject {
-
     NSWindow * window;
     id responder;
 

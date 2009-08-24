@@ -20,6 +20,7 @@ bool debugOn = false;
  * @return the ViEventDispatcher instance
  */
 @implementation ViEventDispatcher
+
 + (ViEventDispatcher *)sharedViEventDispatcher
 {
 
@@ -53,6 +54,9 @@ bool debugOn = false;
 		currentCursorView = nil;
         mode = ViInsertMode;
         command = [[ViController alloc] init];
+        commandModeKey = [NSString stringWithCharacters:&escape length:1];
+        dotEventStack = [[ViDotEventStack alloc] init];
+        [dotEventStack setCommandKey:commandModeKey];
 
 
         keyMaps = [NSMutableDictionary dictionaryWithCapacity:2];
@@ -66,7 +70,7 @@ bool debugOn = false;
          */
         [keyMaps setObject: [NSDictionary dictionaryWithObjectsAndKeys:
 		                   @"controlDefault", @"NSControlKeyMask",
-		                      @"resetStack:", [NSString stringWithCharacters:&escape length:1],
+		                      @"resetStack:", commandModeKey,
 		                     @"testCommand:", @"t",
 		                          @"repeat:", @"1",
 		                          @"repeat:", @"2",
@@ -114,7 +118,7 @@ bool debugOn = false;
          */
         [keyMaps setObject: [NSDictionary dictionaryWithObjectsAndKeys:
 		                   @"controlDefault", @"NSControlKeyMask",
-		                      @"resetStack:", [NSString stringWithCharacters:&escape length:1],
+		                      @"resetStack:", commandModeKey,
 		                     @"testCommand:", @"t",
 		                          @"repeat:", @"0",
 		                          @"repeat:", @"1",
@@ -152,7 +156,7 @@ bool debugOn = false;
          */
         [keyMaps setObject: [NSDictionary dictionaryWithObjectsAndKeys:
                            @"controlDefault", @"NSControlKeyMask",
-                              @"resetStack:", [NSString stringWithCharacters:&escape length:1],
+                              @"resetStack:", commandModeKey,
                                   @"repeat:", @"1",
                                   @"repeat:", @"2",
                                   @"repeat:", @"3",
@@ -184,7 +188,7 @@ bool debugOn = false;
 
         [keyMaps setObject: [NSDictionary dictionaryWithObjectsAndKeys:
 		                   @"controlDefault", @"NSControlKeyMask",
-		                      @"resetStack:", [NSString stringWithCharacters:&escape length:1],
+		                      @"resetStack:", commandModeKey,
 		                          @"repeat:", @"0",
 		                          @"repeat:", @"1",
 		                          @"repeat:", @"2",
@@ -218,7 +222,7 @@ bool debugOn = false;
          * keymap that cannot be used with the cut functionality.
          */
         [keyMaps setObject: [NSDictionary dictionaryWithObjectsAndKeys:
-		                      @"resetStack:", [NSString stringWithCharacters:&escape length:1],
+		                      @"resetStack:", commandModeKey,
 		                          @"repeat:", @"1",
 		                          @"repeat:", @"2",
 		                          @"repeat:", @"3",
@@ -247,7 +251,7 @@ bool debugOn = false;
          * "0" to the moveToBeginningOfLine command.
          */
         [keyMaps setObject: [NSDictionary dictionaryWithObjectsAndKeys:
-		                      @"resetStack:", [NSString stringWithCharacters:&escape length:1],
+		                      @"resetStack:", commandModeKey,
 		                          @"repeat:", @"0",
 		                          @"repeat:", @"1",
 		                          @"repeat:", @"2",
@@ -275,7 +279,7 @@ bool debugOn = false;
          * keymap that cannot be used with the cut functionality.
          */
         [keyMaps setObject: [NSDictionary dictionaryWithObjectsAndKeys:
-		                      @"resetStack:", [NSString stringWithCharacters:&escape length:1],
+		                      @"resetStack:", commandModeKey,
 		                          @"repeat:", @"1",
 		                          @"repeat:", @"2",
 		                          @"repeat:", @"3",
@@ -304,7 +308,7 @@ bool debugOn = false;
          * "0" to the moveToBeginningOfLine command.
          */
         [keyMaps setObject: [NSDictionary dictionaryWithObjectsAndKeys:
-		                      @"resetStack:", [NSString stringWithCharacters:&escape length:1],
+		                      @"resetStack:", commandModeKey,
 		                          @"repeat:", @"0",
 		                          @"repeat:", @"1",
 		                          @"repeat:", @"2",
@@ -332,7 +336,7 @@ bool debugOn = false;
          * keymap that cannot be used with the cut functionality.
          */
         [keyMaps setObject: [NSDictionary dictionaryWithObjectsAndKeys:
-		                      @"resetStack:", [NSString stringWithCharacters:&escape length:1],
+		                      @"resetStack:", commandModeKey,
 		                          @"repeat:", @"1",
 		                          @"repeat:", @"2",
 		                          @"repeat:", @"3",
@@ -361,7 +365,7 @@ bool debugOn = false;
          * "0" to the moveToBeginningOfLine command.
          */
         [keyMaps setObject: [NSDictionary dictionaryWithObjectsAndKeys:
-		                      @"resetStack:", [NSString stringWithCharacters:&escape length:1],
+		                      @"resetStack:", commandModeKey,
 		                          @"repeat:", @"0",
 		                          @"repeat:", @"1",
 		                          @"repeat:", @"2",
@@ -553,8 +557,9 @@ bool debugOn = false;
     if ( lastWindow != theWindow ) {
         lastWindow = theWindow;
         [command setWindow:theWindow];
+        [dotEventStack setWindow:theWindow];
         responder = [theWindow firstResponder];
-		
+
 		[currentCursorView removeFromSuperview];
 		currentCursorView = [[ViView alloc] initWithFrame:[responder bounds]];
 		[responder addSubview:currentCursorView];
@@ -562,7 +567,7 @@ bool debugOn = false;
 	}
 }
 
-- (void)releaseWindow:(NSWindow*)theWindow
+- (void)releaseWindow:(NSWindow *)theWindow
 {
 	if( lastWindow == theWindow){
 		[command releaseWindow:theWindow];
