@@ -20,17 +20,17 @@
     return self;
 }
 
-- (void)setCommandKey(NSString *)theKey
+- (void)setCommandKey:(NSString *)theKey
 {
-    commandKey = theWindow;
+    commandKey = theKey;
 }
 
-- (void)setWindow(NSWindow *)theWindow
+- (void)setWindow:(NSWindow *)theWindow
 {
     activeWindow = theWindow;
 }
 
-- (void)recordEvent(NSEvent *)theEvent
+- (void)recordEvent:(NSEvent *)theEvent
 {
     if ( ! replayInProgress ) {
         [eventStack addObject];
@@ -41,12 +41,13 @@
 {
     NSEnumerator *enumerator = [eventStack objectEnumerator];
     NSEvent * anEvent;
+    NSEvent * event;
 
     replayInProgress = true;
 
-    while (anEvent = [enumerator nextObject]) {
-        event = [activeWindow sendEvent:anEvent];
-    }
+    // while (anEvent = [enumerator nextObject]) {
+    //     event = [activeWindow sendEvent:anEvent];
+    // }
 
     replayInProgress = false;
 }
