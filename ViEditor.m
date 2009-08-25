@@ -768,6 +768,8 @@
 - (void)moveToBeginningOfDocument:(NSNumber *)theIndex
 {
     [responder performSelector: @selector(moveToBeginningOfDocument:) withObject: window];
+    [router setActiveKeyMap:@"commandDefault"];
+    
 }
 
 - (void)moveToEndOfDocument:(NSNumber *)theIndex
