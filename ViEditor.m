@@ -833,6 +833,7 @@
 {
     [responder performSelector: @selector(moveToBeginningOfLine:) withObject: window];
     [responder performSelector: @selector(moveDownAndModifySelection:) withObject: window];
+    [router setActiveKeyMap:@"visualDefault"];
 }
 
 
